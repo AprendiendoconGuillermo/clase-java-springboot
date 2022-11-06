@@ -77,7 +77,22 @@ public class ModuleController {
 			return new ResponseEntity<OutputEntity<List<ModuleEntityResponse>>>(out, out.getCode());
 		}
 	}
+	
+	@GetMapping("/getModuleStatus/{estado}")
+	@Description("Este recurso devuelve los módulos creados")
+	public ResponseEntity<OutputEntity<List<ModuleEntityResponse>>> getModuleStatus(@PathVariable String estado) {
+		OutputEntity<List<ModuleEntityResponse>> out = null;
+		try {
 
+			out = this.moduleService.getModuleStatus(estado);
+
+			return new ResponseEntity<OutputEntity<List<ModuleEntityResponse>>>(out, out.getCode());
+
+		} catch (Exception e) {
+			out.error();
+			return new ResponseEntity<OutputEntity<List<ModuleEntityResponse>>>(out, out.getCode());
+		}
+	}
 
 }
 //  http://localhost:9000/api-curso/module/holaMundo

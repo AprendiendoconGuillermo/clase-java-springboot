@@ -70,5 +70,28 @@ public class ModuleService {
 			return out.error();
 		}
 	}
-
+	
+	public OutputEntity<List<ModuleEntityResponse>> getModuleStatus(String estado) {
+		OutputEntity<List<ModuleEntityResponse>> out = new OutputEntity<List<ModuleEntityResponse>>();
+		try {
+			
+			List<ModuleEntity> list = this.moduleRepository.getModule(estado);
+			
+			if(list.isEmpty())
+				throw new MyException(NOTFOUND.getKey(), NOTFOUND.getCode());
+			
+			List<ModuleEntityResponse> output = new ArrayList<ModuleEntityResponse>();
+			
+			for (ModuleEntity m : list) {
+				ModuleEntityResponse r = new ModuleEntityResponse(m);
+				output.add(r);
+			}
+			
+			return out.done(OK.getCode(), OK.getKey(), output);
+		} catch (MyException e) {
+			return out.failed(e.getCode(), e.getMessages(), null);
+		}catch (Exception e) {
+			return out.error();
+		}
+	}
 }

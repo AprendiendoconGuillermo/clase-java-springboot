@@ -14,5 +14,6 @@ public interface ModuleRepository extends JpaRepository<ModuleEntity, Integer>{
 	@Procedure("existe_modulo")
 	Integer existeModulo(String nom, String des);
 	
-	
+	@Query(value = "call get_module(:estado)", nativeQuery = true)
+	List<ModuleEntity> getModule(String estado);
 }
