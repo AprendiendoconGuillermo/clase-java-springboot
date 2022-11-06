@@ -1,13 +1,18 @@
 package org.spring.boot.controllers.security;
 
 import static org.spring.boot.util.MessageUtil.OK;
+
+import java.util.List;
+
 import static org.spring.boot.util.MessageUtil.INGRESENOMBRE;
 
 import org.spring.boot.entities.response.OutputEntity;
 import org.spring.boot.entities.security.request.ModuleEntityRequest;
+import org.spring.boot.entities.security.response.ModuleEntityResponse;
 import org.spring.boot.exception.MyException;
 import org.spring.boot.services.security.ModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,5 +61,23 @@ public class ModuleController {
 			return new ResponseEntity<OutputEntity<String>>(out, out.getCode());
 		}
 	}
+
+	@GetMapping("/getModule")
+	@Description("Este recurso devuelve los módulos creados")
+	public ResponseEntity<OutputEntity<List<ModuleEntityResponse>>> getModule() {
+		OutputEntity<List<ModuleEntityResponse>> out = null;
+		try {
+
+			out = this.moduleService.getModule();
+
+			return new ResponseEntity<OutputEntity<List<ModuleEntityResponse>>>(out, out.getCode());
+
+		} catch (Exception e) {
+			out.error();
+			return new ResponseEntity<OutputEntity<List<ModuleEntityResponse>>>(out, out.getCode());
+		}
+	}
+
+
 }
 //  http://localhost:9000/api-curso/module/holaMundo

@@ -12,9 +12,16 @@ import javax.persistence.Table;
 import org.spring.boot.entities.security.request.ModuleEntityRequest;
 import org.spring.boot.util.AuditorFieldsEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "sgi_module")
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ModuleEntity extends AuditorFieldsEntity{
 
 	@Id
