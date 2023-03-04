@@ -54,6 +54,20 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <scope>runtime</scope>
 		</dependency>
+		
+		<!-- Json Schema -->
+		<dependency>
+			<groupId>org.everit.json</groupId>
+			<artifactId>org.everit.json.schema</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
+		<!-- Json Schema Validator -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Insert/Update Modules",
+    "description": "Insert/update",
+    "type": "object",
+    "properties": {
+        "idUser": {
+            "description": "idUser",
+            "type": "integer"
+        },
+        "nombre" : {
+           "description": "nombre",
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
+        },
+        "descripcion" : {
+           "description": "descripcion",
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
+        }
+    },
+      "required": ["idUser","nombre","descripcion"]
+}
